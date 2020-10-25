@@ -1,10 +1,11 @@
 import Airpods from "./lib/Airpods.jsx";
-import DateTime from "./lib/DateTime.jsx";
 import Battery from "./lib/Battery.jsx";
 import Cpu from "./lib/Cpu.jsx";
-import Wifi from "./lib/Wifi.jsx";
+import DateTime from "./lib/DateTime.jsx";
 import Dnd from "./lib/Dnd.jsx";
 import Error from "./lib/Error.jsx";
+import Pomodoro from "./lib/Pomodoro.jsx";
+import Wifi from "./lib/Wifi.jsx";
 import parse from "./lib/parse.jsx";
 import styles from "./lib/styles.jsx";
 
@@ -39,6 +40,7 @@ export const render = ({ output }) => {
   }
   return (
     <div style={style}>
+      <Pomodoro output={data.pomodoro}/>
       <Airpods output={data.airpods} />
       <Cpu output={data.cpu} />
       <Wifi output={data.wifi} />

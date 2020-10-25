@@ -32,6 +32,10 @@ BT_DATA=$(grep -ia6 '"'"${MAC_ADDR}"'"'<<<"${BT_DEFAULTS}")
 CONNECTED=$(grep -ia6 "${MAC_ADDR}"<<<"${SYS_PROFILE}"|awk '/Connected: Yes/{print 1}')
 LEFT=$(awk -v pat="BatteryPercentLeft" '$0~pat{gsub (";",""); print $3 }'<<<"${BT_DATA}")
 RIGHT=$(awk -v pat="BatteryPercentRight" '$0~pat{gsub (";",""); print $3 }'<<<"${BT_DATA}")
+
+#POMODORO COUNT
+POMO_COUNT=$(wc -l ~/.scripts/pomo-count.txt | awk '{print $1}')
+
 # CONNECTED=$(1)
 echo $(cat <<-EOF
 {
@@ -57,7 +61,10 @@ echo $(cat <<-EOF
 		"left": "$LEFT",
 		"right": "$RIGHT",
 		"name": "$NAME"
-	}
+	},
+	"pomodoro": {
+		"count": "$POMO_COUNT"
+    }
 }
 EOF
 )
