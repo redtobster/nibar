@@ -1,3 +1,4 @@
+import Airpods from "./lib/Airpods.jsx";
 import DateTime from "./lib/DateTime.jsx";
 import Battery from "./lib/Battery.jsx";
 import Cpu from "./lib/Cpu.jsx";
@@ -38,6 +39,7 @@ export const render = ({ output }) => {
   }
   return (
     <div style={style}>
+      <Airpods output={data.airpods} />
       <Cpu output={data.cpu} />
       <Wifi output={data.wifi} />
       <Battery output={data.battery} />
